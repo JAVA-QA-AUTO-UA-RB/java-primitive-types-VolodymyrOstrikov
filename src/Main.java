@@ -2,35 +2,87 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner _ = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        // 1. Ask the user for their favorite number and double it.
-        System.out.println("Enter your favorite number:");
-        _ favoriteNumber = _.nextInt(); // Replace _ with the correct type and variable
-        _ doubledNumber = _ * 2; // Replace _ with the correct variable/type
-        System.out.println("Your favorite number doubled is: " + _); // Use the correct variable here
 
-        // 2. Ask for a decimal number and halve it.
-        System.out.println("Enter a decimal (double) number:");
-        _ decimalNumber = _.nextDouble(); // Replace _ with the correct type and variable
-        _ halvedDecimal = _ / 2; // Replace _ with the correct variable/type
-        System.out.println("Half of your decimal number is: " + _); // Use the correct variable here
+        System.out.println("The hero has entered an enchanted forest full of adventures");
 
-        // 3. Get a character, convert it to its ASCII value, and display it.
-        System.out.println("Enter a single character:");
-        _ character = _.next().charAt(0); // Replace _ with the correct type and variable
-        _ asciiValue = _; // Replace _ with the correct variable/type
-        System.out.println("The ASCII value of " + _ + " is: " + _); // Use correct variables here
 
-        // 4. Check if the user wants pizza by asking for a yes/no (true/false).
-        System.out.println("Do you like pizza? (true/false):");
-        _ likesPizza = _.nextBoolean(); // Replace _ with the correct type and variable
-        System.out.println("It is " + _ + " that you like pizza!"); // Use the correct variable here
+        int health = 100;
+        int luck = 50;
 
-        // Thank the user for playing the game.
-        System.out.println("Thanks for playing! You’ve learned about Java primitive types.");
 
-        // Close the scanner
-        _.close(); // Replace _ with the correct scanner variable
+        System.out.println("\nEvent 1: Crossroads");
+        System.out.println("\nChoose a road:");
+        System.out.println("1 - old trail (-20 health)");
+        System.out.println("2 - find a treasure (+30 luck)");
+        System.out.println("any other number - get lost (-10 health)");
+        int choice1 = scanner.nextInt();
+
+        if (choice1 == 1) {
+            health -= 20;
+            System.out.println("You took the old trail and lost 20 health points.");
+        } else if (choice1 == 2) {
+            luck += 30;
+            System.out.println("You found a treasure! Luck increased by 30.");
+        } else {
+            health -= 10;
+            System.out.println("You got lost and lost 10 health points.");
+        }
+
+
+        System.out.println("\nEvent 2: Mysterious well");
+        System.out.println("\nWhat will you do?");
+        System.out.println("1 - drink the magical water (+50 health)");
+        System.out.println("2 - ignore the well (-10 luck)");
+        System.out.println("any other number - nothing happens");
+        int choice2 = scanner.nextInt();
+
+        if (choice2 == 1) {
+            health += 50;
+            System.out.println("You drank the magical whiskey! Health increased by 50.");
+        } else if (choice2 == 2) {
+            luck -= 10;
+            System.out.println("You ignored the well and got tired. Luck decreased by 10.");
+        } else {
+            System.out.println("Nothing changed.");
+        }
+
+
+        System.out.println("\nEvent 3: Encounter with a magical creature");
+        System.out.println("\nChoose creature type:");
+        System.out.println("1 - friendly (+20 здоров’я)");
+        System.out.println("2 - hostile (-30 здоров’я)");
+        System.out.println("3 - indifferent (нічого)");
+        int creatureType = scanner.nextInt();
+
+        switch (creatureType) {
+            case 1:
+                health += 20;
+                System.out.println("The creature was friendly and shared food. Health +20.");
+                break;
+            case 2:
+                health -= 30;
+                System.out.println("The creature was hostile and attacked! Health -30.");
+                break;
+            case 3:
+                System.out.println("The creature was indifferent. Nothing changed.");
+                break;
+            default:
+                System.out.println("Unknown creature. Nothing changed.");
+        }
+
+        // Підсумок
+        System.out.println("\n--- Final Status ---");
+        System.out.println("\nHealth: " + health);
+        System.out.println("Luck: " + luck);
+
+        if (health <= 0 || luck <= 0) {
+            System.out.println("You failed to pass through the forest... Try again!");
+        } else {
+            System.out.println("Congratulations! You successfully passed through the enchanted forest!");
+        }
+
+        scanner.close();
     }
 }
